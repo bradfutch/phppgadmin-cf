@@ -90,6 +90,12 @@ class Connection {
 			case '7.4': return 'Postgres74'; break;
 		}
 
+    // untested @HACK by @bfutch to try to enable 10.x support
+    switch (substr($version,0,4)) {
+        case '10.1': return 'Postgres'; break;
+        default: return 'Postgres'; break;
+    }
+
 		/* All <7.4 versions are not supported */
 		// if major version is 7 or less and wasn't cought in the
 		// switch/case block, we have an unsupported version.
