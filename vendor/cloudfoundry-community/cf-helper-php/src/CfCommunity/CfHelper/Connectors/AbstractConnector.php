@@ -75,6 +75,9 @@ abstract class AbstractConnector
          * Integrate with AWS Service Broker v2
          */
 
+        $outName = $service->getName();
+        fwrite( STDOUT, $outName );
+
         $host = $service->getValue('.*CLUSTER_ENDPOINT.*');
         $port = $service->getValue('.*PORT.*');
         $user = $service->getValue('.*DB_USERNAME.*');
