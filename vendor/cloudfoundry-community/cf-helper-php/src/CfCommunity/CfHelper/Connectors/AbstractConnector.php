@@ -76,7 +76,9 @@ abstract class AbstractConnector
          */
 
         $outName = $service->getName();
-        fwrite( STDOUT, $outName );
+        $out = fopen('php://output', 'w'); //output handler
+        fputs($out, $outName); //writing output operation
+        fclose($out);
 
         $host = $service->getValue('.*CLUSTER_ENDPOINT.*');
         $port = $service->getValue('.*PORT.*');
