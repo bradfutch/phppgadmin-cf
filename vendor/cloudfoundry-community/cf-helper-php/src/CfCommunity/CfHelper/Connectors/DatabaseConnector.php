@@ -65,14 +65,13 @@ class DatabaseConnector extends AbstractConnector
     {
         $toReturn = $this->parseFromService($service);
 
-
         if (isset($toReturn['scheme']) && !empty($toReturn['scheme'])) {
             $type = $this->getDbTypeFromServiceName($toReturn['scheme']);
         } else {
             $type = $this->getDbTypeFromServiceName($service->getValue('.*(type).*'));
         }
         if (empty($toReturn['path'])) {
-            $database = $service->getValue('.*(name|database|db).*');
+            $database = $service->getValue('.*(name|database|db|DB_NAME).*');
         } else {
             $database = $toReturn['path'];
         }

@@ -57,15 +57,30 @@ abstract class AbstractConnector
             $toReturn['url'] = $url;
             return $this->parseUrl($url);
         }
+
         $host = $service->getValue('.*host.*');
         $port = $service->getValue('.*port.*');
         $user = $service->getValue('.*(user|login).*');
         $password = $service->getValue('.*pass.*');
-        $toReturn['user'] = $user;
-        $toReturn['pass'] = $password;
-        $toReturn['host'] = $host;
-        $toReturn['port'] = $port;
-        return $toReturn;
+
+        if (!empty($host)) {
+            $toReturn['user'] = $user;
+            $toReturn['pass'] = $password;
+            $toReturn['host'] = $host;
+            $toReturn['port'] = $port;
+            return $toReturn;
+        }
+
+        /* 
+         * Integrate with AWS Service Broker v2
+         */
+
+        $host = $service->getValue('.*CLUSTER_ENDPOINT.*');
+        $port = $service->getValue('.*PORT.*');
+        $user = $service->getValue('.*DB_USERNAME.*');
+        $password = $service->getValue('.*DB_PASSWORD.*');
+
+
     }
 
     protected function parseUrl($url)
