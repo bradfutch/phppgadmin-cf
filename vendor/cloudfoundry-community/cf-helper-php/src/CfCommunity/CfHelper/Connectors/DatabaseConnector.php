@@ -90,6 +90,12 @@ class DatabaseConnector extends AbstractConnector
         }
         $toReturn['sentencePdo'] = sprintf(self::SENTENCE_PDO, $type,
             $toReturn['host'], $portPdo, $database);
+        
+        //debugging
+        $out = fopen('php://output', 'w'); //output handler
+        fputs($out, $type); //writing output operation
+        fputs($out, $database); //writing output operation
+        fclose($out);
 
         return $toReturn;
     }
