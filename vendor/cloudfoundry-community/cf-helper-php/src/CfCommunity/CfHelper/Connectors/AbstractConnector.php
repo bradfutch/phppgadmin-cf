@@ -85,6 +85,7 @@ abstract class AbstractConnector
         $toReturn['host'] = $host;
         $toReturn['port'] = $port;
 
+        /*
         $outName = $service->getName();
         $out = fopen('php://output', 'w'); //output handler
             fputs($out, $outName); //writing output operation
@@ -93,6 +94,7 @@ abstract class AbstractConnector
         fputs($out, $user); //writing output operation
         fputs($out, $password); //writing output operation
         fclose($out);
+        */
 
         return $toReturn;
     }
