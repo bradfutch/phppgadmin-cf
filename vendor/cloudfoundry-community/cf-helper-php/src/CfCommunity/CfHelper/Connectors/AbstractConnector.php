@@ -88,16 +88,14 @@ abstract class AbstractConnector
             $toReturn['host'] = $host;
             $toReturn['port'] = $port;
 
-            /*
-               $outName = $service->getName();
-               $out = fopen('php://output', 'w'); //output handler
-               fputs($out, $outName); //writing output operation
-               fputs($out, $host); //writing output operation
-               fputs($out, $port); //writing output operation
-               fputs($out, $user); //writing output operation
-               fputs($out, $password); //writing output operation
-               fclose($out);
-             */
+            $outName = $service->getName();
+            $out = fopen('php://output', 'w'); //output handler
+                fputs($out, $outName); //writing output operation
+            fputs($out, $host); //writing output operation
+            fputs($out, $port); //writing output operation
+            fputs($out, $user); //writing output operation
+            fputs($out, $password); //writing output operation
+            fclose($out);
 
             return $toReturn;
         }
