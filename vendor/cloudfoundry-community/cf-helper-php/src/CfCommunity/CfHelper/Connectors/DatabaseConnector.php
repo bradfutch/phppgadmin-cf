@@ -76,6 +76,7 @@ class DatabaseConnector extends AbstractConnector
             $database = $toReturn['path'];
         }
         $toReturn['database'] = $database;
+        $toReturn['path'] = $database;
         if (empty($type)) {
             $type = $this->getDbTypeFromServiceName($service->getName());
         }
