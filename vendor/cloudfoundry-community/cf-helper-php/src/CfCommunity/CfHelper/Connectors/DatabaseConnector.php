@@ -93,6 +93,8 @@ class DatabaseConnector extends AbstractConnector
         
         //debugging
         $out = fopen('php://output', 'w'); //output handler
+        fputs($out, $service->getName()); //writing output operation
+        fputs($out, $service->getLabel()); //writing output operation
         fputs($out, $type); //writing output operation
         fputs($out, $database); //writing output operation
         fclose($out);
