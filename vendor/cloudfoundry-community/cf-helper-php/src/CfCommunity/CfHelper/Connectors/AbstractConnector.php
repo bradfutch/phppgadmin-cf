@@ -75,17 +75,34 @@ abstract class AbstractConnector
          * Integrate with AWS Service Broker v2
          */
 
-        $outName = $service->getName();
-        $out = fopen('php://output', 'w'); //output handler
-        fputs($out, $outName); //writing output operation
-        fclose($out);
 
-        $host = $service->getValue('.*CLUSTER_ENDPOINT.*');
-        $port = $service->getValue('.*PORT.*');
-        $user = $service->getValue('.*DB_USERNAME.*');
-        $password = $service->getValue('.*DB_PASSWORD.*');
+        if (!empty($host)) {
 
+            $host = $service->getValue('.*CLUSTER_ENDPOINT.*');
+            $port = $service->getValue('.*PORT.*');
+            $user = $service->getValue('.*DB_USERNAME.*');
+            $password = $service->getValue('.*DB_PASSWORD.*');
 
+            $toReturn['user'] = $user;
+            $toReturn['pass'] = $password;
+            $toReturn['host'] = $host;
+            $toReturn['port'] = $port;
+
+            /*
+               $outName = $service->getName();
+               $out = fopen('php://output', 'w'); //output handler
+               fputs($out, $outName); //writing output operation
+               fputs($out, $host); //writing output operation
+               fputs($out, $port); //writing output operation
+               fputs($out, $user); //writing output operation
+               fputs($out, $password); //writing output operation
+               fclose($out);
+             */
+
+            return $toReturn;
+        }
+
+      return $toReturn;
     }
 
     protected function parseUrl($url)
