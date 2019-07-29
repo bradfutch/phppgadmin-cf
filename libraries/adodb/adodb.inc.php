@@ -427,7 +427,7 @@
 	/**
 	 * Constructor
 	 */
-	function ADOConnection()			
+	function __construct()			
 	{
 		die('Virtual Class -- cannot instantiate');
 	}
