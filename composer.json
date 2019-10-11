@@ -4,7 +4,13 @@
     "type": "Application",
     "license": "GPL-2.0+",
     "require": {
-        "php": ">=5.0"
+        "php": ">=5.0",
+        "ext-mbstring": "*",
+        "ext-pgsql": "*",
+        "ext-pdo": "*",
+        "ext-pdo_pgsql": "*",
+        "cloudfoundry-community/cf-helper-php": "1.4.*",
+        "monolog/monolog": "~1.13"
     },
     "minimum-stability": "stable",
     "autoload": {
