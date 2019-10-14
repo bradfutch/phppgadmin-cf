@@ -3,4 +3,5 @@
 applications:
 - name: phppgadmin-update
   memory: 1G
+  random-route: true
   instances: 1
